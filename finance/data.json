@@ -1,0 +1,29 @@
+{
+  "profile": {
+    "name": "אלעד",
+    "created": "2026-04-17",
+    "daily_checkin_time": "21:00"
+  },
+  "income_sources": [],
+  "fixed_expenses": [],
+  "daily_expenses": [],
+  "monthly_data": [],
+  "salary_slips": [],
+  "budgets": {},
+  "category_totals": {},
+  "month_income": 0,
+  "month_expenses": 0,
+  "health_score": 0,
+  "score_breakdown": {
+    "savings": 0,
+    "budget": 0,
+    "diversity": 0,
+    "emergency": 0
+  },
+  "tips": [
+    "הגדר תקציב חודשי לכל קטגוריה ועמוד בו",
+    "שמור לפחות 3 חודשי הוצאות כקרן חירום",
+    "מטרה: לחסוך לפחות 20% מההכנסה נטו",
+    "הגדל חיסכון אוטומטי ביום קבלת המשכורת"
+  ]
+}
