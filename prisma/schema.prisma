@@ -87,3 +87,20 @@ model ProgressEntry {
   note      String?
   createdAt DateTime @default(now())
 }
+
+model DailyReport {
+  id               String   @id @default(cuid())
+  date             String
+  type             String   // "morning" | "evening"
+  aiNews           String?
+  personalDev      String?
+  writingTask1     String?
+  writingTask2     String?
+  eveningQuestions String?  // JSON array of 3 questions
+  userResponse     String?  // user's written response
+  progressInsight  String?  // Claude's analysis of user's response
+  dayPlan          String?  // what user planned for the day
+  createdAt        DateTime @default(now())
+
+  @@unique([date, type])
+}
