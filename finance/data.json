@@ -2,28 +2,102 @@
   "profile": {
     "name": "אלעד",
     "created": "2026-04-17",
-    "daily_checkin_time": "21:00"
+    "daily_checkin_time": "21:00",
+    "savings_goal_monthly": 1000,
+    "current_month": "אפריל 2026"
   },
-  "income_sources": [],
-  "fixed_expenses": [],
+  "income_sources": [
+    {
+      "source": "צבא",
+      "net": 1462,
+      "gross": 1462,
+      "date": "1 לחודש",
+      "type": "קבוע",
+      "notes": "שכר חייל קבוע"
+    },
+    {
+      "source": "עבודה",
+      "net": 0,
+      "gross": 0,
+      "date": "10 לחודש",
+      "type": "קבוע",
+      "notes": "⚠️ לעדכן סכום"
+    }
+  ],
+  "fixed_expenses": [
+    {
+      "name": "מנוי Claude AI",
+      "category": "חשבונות קבועים",
+      "amount": 88,
+      "day": "חודשי",
+      "method": "כרטיס אשראי",
+      "essential": true,
+      "saveable": false,
+      "notes": "עוזר פיננסי + AI"
+    },
+    {
+      "name": "מנוי ChatGPT",
+      "category": "חשבונות קבועים",
+      "amount": 71,
+      "day": "חודשי",
+      "method": "כרטיס אשראי",
+      "essential": false,
+      "saveable": true,
+      "notes": "בדוק האם נחוץ ביחד עם Claude"
+    },
+    {
+      "name": "מנוי Spotify",
+      "category": "חשבונות קבועים",
+      "amount": 36,
+      "day": "חודשי",
+      "method": "כרטיס אשראי",
+      "essential": false,
+      "saveable": true,
+      "notes": "מוזיקה"
+    },
+    {
+      "name": "מאמן כושר - אופק זרמטי",
+      "category": "ספורט",
+      "amount": 600,
+      "day": "חודשי",
+      "method": "העברה בנקאית",
+      "essential": false,
+      "saveable": true,
+      "notes": "אימון אישי"
+    }
+  ],
   "daily_expenses": [],
   "monthly_data": [],
   "salary_slips": [],
-  "budgets": {},
+  "budgets": {
+    "מזון וסופר": {"planned": 350, "actual": 0},
+    "מסעדות וקפה": {"planned": 200, "actual": 0},
+    "תחבורה": {"planned": 150, "actual": 0},
+    "בילויים": {"planned": 150, "actual": 0},
+    "בריאות ורפואה": {"planned": 80, "actual": 0},
+    "ביגוד והנעלה": {"planned": 100, "actual": 0},
+    "חשבונות קבועים": {"planned": 195, "actual": 0},
+    "ספורט": {"planned": 600, "actual": 0},
+    "חיסכון": {"planned": 1000, "actual": 0},
+    "מתנות": {"planned": 50, "actual": 0},
+    "אחר": {"planned": 100, "actual": 0}
+  },
   "category_totals": {},
-  "month_income": 0,
-  "month_expenses": 0,
-  "health_score": 0,
+  "month_income": 1462,
+  "month_expenses": 795,
+  "health_score": 35,
   "score_breakdown": {
     "savings": 0,
-    "budget": 0,
-    "diversity": 0,
-    "emergency": 0
+    "budget": 15,
+    "diversity": 12,
+    "emergency": 8
   },
   "tips": [
-    "הגדר תקציב חודשי לכל קטגוריה ועמוד בו",
-    "שמור לפחות 3 חודשי הוצאות כקרן חירום",
-    "מטרה: לחסוך לפחות 20% מההכנסה נטו",
-    "הגדל חיסכון אוטומטי ביום קבלת המשכורת"
+    "⚠️ הוצאות קבועות (795₪) = 54% מהכנסת הצבא בלבד — גבוה מאוד!",
+    "💡 מטרת החיסכון שלך: 1,000₪/חודש — הגדר חשבון חיסכון נפרד והעבר אוטומטית",
+    "🤔 יש לך גם Claude וגם ChatGPT — חיסכון פוטנציאלי של 71₪/חודש",
+    "💪 המאמן האישי (600₪) = 75% מסך ההוצאות הקבועות שלך — שקול אם זה משתלם",
+    "📅 ביום קבלת משכורת — העבר מיד 1,000₪ לחיסכון לפני כל הוצאה אחרת",
+    "🎯 לאחר עדכון כל ההוצאות הנוכחיות, נבנה תקציב מדויק יחד"
   ]
 }
