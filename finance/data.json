@@ -17,11 +17,19 @@
     },
     {
       "source": "עבודה",
-      "net": 0,
-      "gross": 0,
+      "net": 5616,
+      "gross": 5616,
       "date": "10 לחודש",
       "type": "קבוע",
-      "notes": "⚠️ לעדכן סכום"
+      "notes": "משכורת עבודה"
+    },
+    {
+      "source": "אמא - תוספת חד פעמית",
+      "net": 2000,
+      "gross": 2000,
+      "date": "אפריל 2026",
+      "type": "חד פעמי",
+      "notes": "⚠️ לא לחשב כהכנסה קבועה לתכנון עתידי"
     }
   ],
   "fixed_expenses": [
@@ -43,7 +51,7 @@
       "method": "כרטיס אשראי",
       "essential": false,
       "saveable": true,
-      "notes": "בדוק האם נחוץ ביחד עם Claude"
+      "notes": "⚠️ כבר יש Claude — בדוק אם נחוץ"
     },
     {
       "name": "מנוי Spotify",
@@ -66,38 +74,96 @@
       "notes": "אימון אישי"
     }
   ],
-  "daily_expenses": [],
-  "monthly_data": [],
+  "daily_expenses": [
+    {"date": "04/2026", "category": "מתנות",        "description": "מתנה - זארה",                         "amount": 100,  "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מתנות",        "description": "תכשיט מגנוליה לבת זוג",               "amount": 415,  "method": "לא צוין",            "essential": false, "notes": "רכישה גדולה"},
+    {"date": "04/2026", "category": "מתנות",        "description": "פרחים לבת זוג",                       "amount": 140,  "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "חשבונות קבועים","description": "מנוי גוגל",                          "amount": 8,    "method": "כרטיס אשראי",        "essential": true,  "notes": ""},
+    {"date": "04/2026", "category": "אחר",           "description": "ביט - העברה",                         "amount": 20,   "method": "ביט",                "essential": false, "notes": "לא ידוע למה"},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "משלוח אוכל",                          "amount": 118,  "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מזון וסופר",   "description": "שופרסל",                              "amount": 64,   "method": "לא צוין",            "essential": true,  "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "פסאו - מסעדה",                        "amount": 286,  "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "פריים - מסעדה",                       "amount": 120,  "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "משלוח אוכל",                          "amount": 83,   "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "קולה",                                "amount": 8,    "method": "מזומן",              "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "ארומה - כריך וקפה",                   "amount": 15,   "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "משקה אנרגיה",                         "amount": 10,   "method": "מזומן",              "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "בילויים",      "description": "באולינג ומשחקייה",                    "amount": 66,   "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "אחר",           "description": "תרומה - חיות בכבוד",                  "amount": 189,  "method": "לא צוין",            "essential": false, "notes": "תרומה לעמותה"},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "עזרא ובניו - אוכל",                   "amount": 65,   "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מתנות",        "description": "פרחים לבת זוג",                       "amount": 205,  "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "משקה אנרגיה",                         "amount": 16,   "method": "מזומן",              "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "ביגוד והנעלה", "description": "ריקושט - כומתה",                       "amount": 31,   "method": "לא צוין",            "essential": true,  "notes": "ציוד צבאי"},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "ספייס - משקה",                        "amount": 20,   "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "גלידה לבת זוג",                       "amount": 30,   "method": "מזומן",              "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "חינוך",        "description": "שיעורי נהיגה",                        "amount": 300,  "method": "לא צוין",            "essential": true,  "notes": ""},
+    {"date": "04/2026", "category": "אחר",           "description": "KSP - 2 ראשי מטען + 2 מולטי ויטמין", "amount": 365,  "method": "לא צוין",            "essential": true,  "notes": "אלקטרוניקה + ויטמינים"},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "ארומה - כריך",                        "amount": 15,   "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "אחר",           "description": "אוזניות וכבל לטלפון",                 "amount": 349,  "method": "לא צוין",            "essential": false, "notes": "אלקטרוניקה"},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "משקה אנרגיה",                         "amount": 11,   "method": "מזומן",              "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מסעדות וקפה",  "description": "משקה אנרגיה",                         "amount": 14,   "method": "מזומן",              "essential": false, "notes": ""},
+    {"date": "04/2026", "category": "מזון וסופר",   "description": "קניות סופר + מברשת שיניים חשמלית",   "amount": 304,  "method": "לא צוין",            "essential": true,  "notes": ""},
+    {"date": "04/2026", "category": "בריאות ורפואה","description": "תספורת",                              "amount": 120,  "method": "מזומן",              "essential": true,  "notes": ""},
+    {"date": "04/2026", "category": "חינוך",        "description": "שיעורי נהיגה - העברה בנקאית",         "amount": 800,  "method": "העברה בנקאית",       "essential": true,  "notes": ""}
+  ],
+  "monthly_data": [
+    {
+      "month": "אפריל 2026",
+      "income": 9078,
+      "expenses": 5082,
+      "score": 60,
+      "notes": "הכנסה גבוהה: עבודה 5,616₪ + צבא 1,462₪ + אמא 2,000₪ (חד פעמי). הכנסה רגילה: 7,078₪"
+    }
+  ],
   "salary_slips": [],
   "budgets": {
-    "מזון וסופר": {"planned": 350, "actual": 0},
-    "מסעדות וקפה": {"planned": 200, "actual": 0},
-    "תחבורה": {"planned": 150, "actual": 0},
-    "בילויים": {"planned": 150, "actual": 0},
-    "בריאות ורפואה": {"planned": 80, "actual": 0},
-    "ביגוד והנעלה": {"planned": 100, "actual": 0},
-    "חשבונות קבועים": {"planned": 195, "actual": 0},
-    "ספורט": {"planned": 600, "actual": 0},
-    "חיסכון": {"planned": 1000, "actual": 0},
-    "מתנות": {"planned": 50, "actual": 0},
-    "אחר": {"planned": 100, "actual": 0}
+    "מזון וסופר":      {"planned": 350,  "actual": 368},
+    "מסעדות וקפה":     {"planned": 200,  "actual": 811},
+    "תחבורה":          {"planned": 150,  "actual": 0},
+    "בילויים":         {"planned": 150,  "actual": 66},
+    "בריאות ורפואה":   {"planned": 80,   "actual": 120},
+    "ביגוד והנעלה":    {"planned": 100,  "actual": 31},
+    "חשבונות קבועים":  {"planned": 200,  "actual": 203},
+    "ספורט":           {"planned": 600,  "actual": 600},
+    "חיסכון":          {"planned": 1000, "actual": 0},
+    "מתנות":           {"planned": 200,  "actual": 860},
+    "חינוך":           {"planned": 300,  "actual": 1100},
+    "אחר":             {"planned": 150,  "actual": 923}
   },
-  "category_totals": {},
-  "month_income": 1462,
-  "month_expenses": 795,
-  "health_score": 35,
+  "category_totals": {
+    "מתנות":           {"total": 860,  "count": 4,  "max": 415},
+    "מסעדות וקפה":     {"total": 811,  "count": 14, "max": 286},
+    "מזון וסופר":      {"total": 368,  "count": 2,  "max": 304},
+    "חשבונות קבועים":  {"total": 203,  "count": 4,  "max": 88},
+    "בילויים":         {"total": 66,   "count": 1,  "max": 66},
+    "אחר":             {"total": 923,  "count": 4,  "max": 365},
+    "ביגוד והנעלה":    {"total": 31,   "count": 1,  "max": 31},
+    "בריאות ורפואה":   {"total": 120,  "count": 1,  "max": 120},
+    "חינוך":           {"total": 1100, "count": 2,  "max": 800},
+    "ספורט":           {"total": 600,  "count": 1,  "max": 600}
+  },
+  "balances": {
+    "bank": 4114,
+    "cash": 600,
+    "total": 4714
+  },
+  "month_income": 9078,
+  "month_expenses": 5082,
+  "month_net": 3996,
+  "regular_monthly_income": 7078,
+  "health_score": 60,
   "score_breakdown": {
-    "savings": 0,
-    "budget": 15,
-    "diversity": 12,
-    "emergency": 8
+    "savings": 27,
+    "budget": 8,
+    "diversity": 16,
+    "emergency": 9
   },
   "tips": [
-    "⚠️ הוצאות קבועות (795₪) = 54% מהכנסת הצבא בלבד — גבוה מאוד!",
-    "💡 מטרת החיסכון שלך: 1,000₪/חודש — הגדר חשבון חיסכון נפרד והעבר אוטומטית",
-    "🤔 יש לך גם Claude וגם ChatGPT — חיסכון פוטנציאלי של 71₪/חודש",
-    "💪 המאמן האישי (600₪) = 75% מסך ההוצאות הקבועות שלך — שקול אם זה משתלם",
-    "📅 ביום קבלת משכורת — העבר מיד 1,000₪ לחיסכון לפני כל הוצאה אחרת",
-    "🎯 לאחר עדכון כל ההוצאות הנוכחיות, נבנה תקציב מדויק יחד"
+    "⚠️ מסעדות + משלוחים: 811₪ ב-14 עסקאות! תקציב מומלץ: 200₪ — חיסכון פוטנציאלי: 611₪/חודש",
+    "💝 מתנות לבת זוג החודש: 860₪ (תכשיט 415₪ + פרחים 345₪) — קבע תקציב מתנות: 200₪/חודש",
+    "⚡ 5 משקאות אנרגיה = 61₪ — קנה קרטון ב-45₪ וחסוך כמעט חצי",
+    "💡 Claude + ChatGPT = 159₪/חודש — יש לך כבר Claude כיועץ פיננסי, שקול לבטל ChatGPT",
+    "🚗 שיעורי נהיגה: 1,100₪ — השקעה חשובה! ודא כמה שיעורים נותרו לבחינה",
+    "💰 2,000₪ מאמא = חד פעמי! תכנן את מאי רק על בסיס 7,078₪ הכנסה קבועה"
   ]
 }
