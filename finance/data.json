@@ -104,7 +104,9 @@
     {"date": "04/2026", "category": "מסעדות וקפה",  "description": "משקה אנרגיה",                         "amount": 14,   "method": "מזומן",              "essential": false, "notes": ""},
     {"date": "04/2026", "category": "מזון וסופר",   "description": "קניות סופר + מברשת שיניים חשמלית",   "amount": 304,  "method": "לא צוין",            "essential": true,  "notes": ""},
     {"date": "04/2026", "category": "בריאות ורפואה","description": "תספורת",                              "amount": 120,  "method": "מזומן",              "essential": true,  "notes": ""},
-    {"date": "04/2026", "category": "חינוך",        "description": "שיעורי נהיגה - העברה בנקאית",         "amount": 800,  "method": "העברה בנקאית",       "essential": true,  "notes": ""}
+    {"date": "04/2026", "category": "חינוך",        "description": "שיעורי נהיגה - העברה בנקאית",         "amount": 800,  "method": "העברה בנקאית",       "essential": true,  "notes": ""},
+    {"date": "18/04/2026", "category": "תחבורה",      "description": "מונית",                                "amount": 50,   "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "18/04/2026", "category": "מסעדות וקפה", "description": "מסעדה",                               "amount": 340,  "method": "לא צוין",            "essential": false, "notes": ""}
   ],
   "monthly_data": [
     {
@@ -118,8 +120,8 @@
   "salary_slips": [],
   "budgets": {
     "מזון וסופר":      {"planned": 350,  "actual": 368},
-    "מסעדות וקפה":     {"planned": 200,  "actual": 811},
-    "תחבורה":          {"planned": 150,  "actual": 0},
+    "מסעדות וקפה":     {"planned": 200,  "actual": 1151},
+    "תחבורה":          {"planned": 150,  "actual": 50},
     "בילויים":         {"planned": 150,  "actual": 66},
     "בריאות ורפואה":   {"planned": 80,   "actual": 120},
     "ביגוד והנעלה":    {"planned": 100,  "actual": 31},
@@ -132,7 +134,7 @@
   },
   "category_totals": {
     "מתנות":           {"total": 860,  "count": 4,  "max": 415},
-    "מסעדות וקפה":     {"total": 811,  "count": 14, "max": 286},
+    "מסעדות וקפה":     {"total": 1151, "count": 15, "max": 340},
     "מזון וסופר":      {"total": 368,  "count": 2,  "max": 304},
     "חשבונות קבועים":  {"total": 203,  "count": 4,  "max": 88},
     "בילויים":         {"total": 66,   "count": 1,  "max": 66},
@@ -148,8 +150,8 @@
     "total": 4714
   },
   "month_income": 9078,
-  "month_expenses": 5082,
-  "month_net": 3996,
+  "month_expenses": 5472,
+  "month_net": 3606,
   "regular_monthly_income": 7078,
   "health_score": 60,
   "score_breakdown": {
