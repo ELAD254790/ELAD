@@ -572,6 +572,129 @@ def create_salary_log(wb, data):
 
     return ws
 
+# ─── SHEET: NEXT MONTH PLAN ───────────────────────────────────────────────────
+def create_next_month_plan(wb, data):
+    ws = wb.create_sheet("🗓️ תכנון חודש הבא")
+    ws.sheet_view.rightToLeft = True
+    ws.sheet_properties.tabColor = C_TEAL
+
+    for r in range(1, 90):
+        for c in range(1, 13):
+            ws.cell(r, c).fill = make_fill(C_DARK_BG)
+
+    # Title
+    ws.merge_cells("A1:L1")
+    ws["A1"].value = "🗓️  תכנון פיננסי — חודש הבא"
+    ws["A1"].fill = make_fill(C_TEAL)
+    ws["A1"].font = Font(color=C_WHITE, bold=True, size=16, name="Calibri")
+    ws["A1"].alignment = center()
+    set_row_height(ws, 1, 35)
+
+    # ── Income Planning ───────────────────────────────────────────────────────
+    set_row_height(ws, 2, 8)
+    ws.merge_cells("A3:L3")
+    ws["A3"].value = "💵  הכנסות צפויות"
+    ws["A3"].fill = make_fill(C_GREEN)
+    ws["A3"].font = Font(color=C_WHITE, bold=True, size=13, name="Calibri")
+    ws["A3"].alignment = center()
+    set_row_height(ws, 3, 28)
+
+    inc_hdr = ["מקור", "סכום צפוי", "תאריך", "הערות"]
+    for i, h in enumerate(inc_hdr):
+        apply_header_style(ws, 4, i+1, h, bg=C_HEADER_BG, fg=C_GREEN)
+    set_row_height(ws, 4, 24)
+
+    income_plan = [
+        ("צבא", 1462, "1 לחודש", "קבוע"),
+        ("עבודה", "?", "10 לחודש", "⚠️ משתנה — עדכן בתחילת חודש"),
+        ("סה\"כ צפוי", "=B5+B6", "", ""),
+    ]
+    for idx, (src, amt, dt, note) in enumerate(income_plan):
+        r = 5 + idx
+        is_total = idx == 2
+        bg = C_TEAL if is_total else ("071A0D" if idx % 2 == 0 else "051409")
+        fg = C_WHITE if is_total else C_GREEN
+        apply_data_style(ws, r, 1, src, bg=bg, bold=is_total)
+        apply_data_style(ws, r, 2, amt, bg=bg, fg=fg, bold=is_total, fmt='₪#,##0' if isinstance(amt, (int, float)) else None)
+        apply_data_style(ws, r, 3, dt, bg=bg)
+        apply_data_style(ws, r, 4, note, bg=bg)
+        set_row_height(ws, r, 22)
+
+    # ── Budget Plan ────────────────────────────────────────────────────────────
+    set_row_height(ws, 9, 8)
+    ws.merge_cells("A10:L10")
+    ws["A10"].value = "🎯  תקציב מתוכנן — לפי לקחים מהחודש הנוכחי"
+    ws["A10"].fill = make_fill(C_BLUE)
+    ws["A10"].font = Font(color=C_WHITE, bold=True, size=13, name="Calibri")
+    ws["A10"].alignment = center()
+    set_row_height(ws, 10, 28)
+
+    bud_hdr = ["קטגוריה", "הוצאה החודש", "תקציב מומלץ", "הפרש", "הסבר"]
+    for i, h in enumerate(bud_hdr):
+        apply_header_style(ws, 11, i+1, h, bg=C_HEADER_BG, fg=C_BLUE)
+    set_row_height(ws, 11, 24)
+
+    col_widths = [22, 15, 15, 14, 35]
+    for i, w in enumerate(col_widths):
+        set_col_width(ws, i+1, w)
+
+    budgets = data.get("budgets", {})
+    budget_advice = {
+        "מסעדות וקפה":    "⚠️ הוצאת 811₪! הגבל ל-200₪ — בשל, תכין אוכל",
+        "מתנות":           "⚠️ 860₪ החודש! הגדר 200₪ תקרה לחודש הבא",
+        "חינוך":           "שיעורי נהיגה — כמה עוד נשארו לך לבחינה?",
+        "מזון וסופר":      "✅ סביר — נסה להישאר מתחת ל-350₪",
+        "ספורט":           "מאמן אישי — 600₪ קבוע",
+        "חשבונות קבועים":  "שקול לבטל ChatGPT (71₪) — חסוך 71₪/חודש",
+        "אחר":             "⚠️ 923₪! בדוק מה היה שם ותכנן מראש",
+        "חיסכון":          "💰 הפרש 1,000₪ אוטומטית ב-1 לחודש!",
+        "תחבורה":          "לא הוצאת — האם יש לך נסיעות?",
+        "בילויים":         "✅ 66₪ — סביר",
+        "בריאות ורפואה":   "✅ 120₪ — סביר",
+        "ביגוד והנעלה":    "✅ 31₪ — מצוין",
+    }
+
+    row = 12
+    total_actual = 0
+    total_recommended = 0
+    for cat, vals in budgets.items():
+        actual = vals.get("actual", 0)
+        recommended = vals.get("planned", 0)
+        diff = recommended - actual
+        bg = "000D1A" if row % 2 == 0 else "000B15"
+        icon = EXPENSE_CATEGORIES.get(cat, "📌")
+        apply_data_style(ws, row, 1, f"{icon} {cat}", bg=bg, bold=True)
+        apply_data_style(ws, row, 2, actual, bg=bg, fg=(C_RED if actual > recommended else C_WHITE), fmt='₪#,##0')
+        apply_data_style(ws, row, 3, recommended, bg=bg, fg=C_BLUE, fmt='₪#,##0')
+        diff_bg = C_GREEN if diff >= 0 else C_RED
+        apply_data_style(ws, row, 4, diff, bg=diff_bg, fg=C_WHITE, bold=True, fmt='₪#,##0')
+        apply_data_style(ws, row, 5, budget_advice.get(cat, ""), bg=bg, fg=C_LIGHT_GRAY)
+        set_row_height(ws, row, 22)
+        total_actual += actual
+        total_recommended += recommended
+        row += 1
+
+    # Totals
+    set_row_height(ws, row, 30)
+    ws.merge_cells(f"A{row}:A{row}")
+    apply_data_style(ws, row, 1, "סה\"כ", bg=C_BLUE, fg=C_WHITE, bold=True)
+    apply_data_style(ws, row, 2, total_actual, bg=C_RED, fg=C_WHITE, bold=True, fmt='₪#,##0')
+    apply_data_style(ws, row, 3, total_recommended, bg=C_BLUE, fg=C_WHITE, bold=True, fmt='₪#,##0')
+    apply_data_style(ws, row, 4, total_recommended - total_actual, bg=(C_GREEN if total_recommended >= total_actual else C_RED), fg=C_WHITE, bold=True, fmt='₪#,##0')
+
+    # ── Savings Goal Box ───────────────────────────────────────────────────────
+    goal_row = row + 2
+    ws.merge_cells(f"A{goal_row}:L{goal_row}")
+    savings_goal = data.get("profile", {}).get("savings_goal_monthly", 1000)
+    ws[f"A{goal_row}"].value = f"🎯  יעד חיסכון חודשי: {savings_goal:,}₪  |  הוראת קבע אוטומטית ב-1 לחודש!"
+    ws[f"A{goal_row}"].fill = make_fill(C_GOLD)
+    ws[f"A{goal_row}"].font = Font(color="1A1A2E", bold=True, size=13, name="Calibri")
+    ws[f"A{goal_row}"].alignment = center()
+    set_row_height(ws, goal_row, 35)
+
+    return ws
+
+
 # ─── MAIN BUILD FUNCTION ──────────────────────────────────────────────────────
 def build_workbook(data=None, output_path=None):
     if data is None:
@@ -591,6 +714,7 @@ def build_workbook(data=None, output_path=None):
     create_budget_plan(wb, data)
     create_analysis(wb, data)
     create_salary_log(wb, data)
+    create_next_month_plan(wb, data)
 
     wb.save(output_path)
     print(f"✅ קובץ נשמר: {output_path}")
