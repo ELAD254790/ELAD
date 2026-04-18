@@ -106,7 +106,8 @@
     {"date": "04/2026", "category": "בריאות ורפואה","description": "תספורת",                              "amount": 120,  "method": "מזומן",              "essential": true,  "notes": ""},
     {"date": "04/2026", "category": "חינוך",        "description": "שיעורי נהיגה - העברה בנקאית",         "amount": 800,  "method": "העברה בנקאית",       "essential": true,  "notes": ""},
     {"date": "18/04/2026", "category": "תחבורה",      "description": "מונית",                                "amount": 50,   "method": "לא צוין",            "essential": false, "notes": ""},
-    {"date": "18/04/2026", "category": "מסעדות וקפה", "description": "מסעדה",                               "amount": 340,  "method": "לא צוין",            "essential": false, "notes": ""}
+    {"date": "18/04/2026", "category": "מסעדות וקפה", "description": "מסעדה",                               "amount": 340,  "method": "לא צוין",            "essential": false, "notes": ""},
+    {"date": "18/04/2026", "category": "תחבורה",      "description": "מונית",                                "amount": 40,   "method": "לא צוין",            "essential": false, "notes": ""}
   ],
   "monthly_data": [
     {
@@ -121,7 +122,7 @@
   "budgets": {
     "מזון וסופר":      {"planned": 350,  "actual": 368},
     "מסעדות וקפה":     {"planned": 200,  "actual": 1151},
-    "תחבורה":          {"planned": 150,  "actual": 50},
+    "תחבורה":          {"planned": 150,  "actual": 90},
     "בילויים":         {"planned": 150,  "actual": 66},
     "בריאות ורפואה":   {"planned": 80,   "actual": 120},
     "ביגוד והנעלה":    {"planned": 100,  "actual": 31},
@@ -150,8 +151,8 @@
     "total": 4714
   },
   "month_income": 9078,
-  "month_expenses": 5472,
-  "month_net": 3606,
+  "month_expenses": 5512,
+  "month_net": 3566,
   "regular_monthly_income": 7078,
   "health_score": 60,
   "score_breakdown": {
