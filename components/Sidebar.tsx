@@ -3,26 +3,47 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  LayoutDashboard,
-  CheckSquare,
-  Target,
-  MessageSquare,
-  TrendingUp,
-  FolderOpen,
-  Sparkles,
-  Menu,
-  X,
+  LayoutDashboard, CheckSquare, Target, MessageSquare, TrendingUp, FolderOpen,
+  Sparkles, Menu, X, ShieldCheck, Zap, RotateCcw, User, Eye, CalendarDays, BarChart2, BookOpen,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { href: "/", label: "לוח בקרה", icon: LayoutDashboard },
-  { href: "/habits", label: "הרגלים", icon: CheckSquare },
-  { href: "/goals", label: "מטרות", icon: Target },
-  { href: "/chat", label: "יועץ AI", icon: MessageSquare },
-  { href: "/progress", label: "התקדמות", icon: TrendingUp },
-  { href: "/files", label: "קבצים", icon: FolderOpen },
+const navGroups = [
+  {
+    label: "ראשי",
+    items: [
+      { href: "/", label: "לוח בקרה", icon: LayoutDashboard },
+      { href: "/habits", label: "הרגלים", icon: CheckSquare },
+      { href: "/goals", label: "מטרות", icon: Target },
+    ],
+  },
+  {
+    label: "ביצוע",
+    items: [
+      { href: "/focus", label: "מצב ריכוז", icon: Zap },
+      { href: "/discipline", label: "ניקוד משמעת", icon: ShieldCheck },
+      { href: "/recovery", label: "התאוששות", icon: RotateCcw },
+    ],
+  },
+  {
+    label: "עומק",
+    items: [
+      { href: "/identity", label: "דף זהות", icon: User },
+      { href: "/goal-vision", label: "חזון מטרה", icon: Eye },
+      { href: "/weekly-review", label: "סקירה שבועית", icon: BookOpen },
+    ],
+  },
+  {
+    label: "ניתוח וכלים",
+    items: [
+      { href: "/progress", label: "מדדי התקדמות", icon: TrendingUp },
+      { href: "/advanced-analytics", label: "אנליטיקה מתקדמת", icon: BarChart2 },
+      { href: "/calendar", label: "לוח שנה", icon: CalendarDays },
+      { href: "/chat", label: "יועץ AI", icon: MessageSquare },
+      { href: "/files", label: "קבצים", icon: FolderOpen },
+    ],
+  },
 ];
 
 export default function Sidebar() {
@@ -41,65 +62,64 @@ export default function Sidebar() {
 
       {/* Overlay */}
       {mobileOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-30 md:hidden"
-          onClick={() => setMobileOpen(false)}
-        />
+        <div className="fixed inset-0 bg-black/60 z-30 md:hidden" onClick={() => setMobileOpen(false)} />
       )}
 
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed top-0 right-0 h-full w-64 bg-gray-900 text-white flex flex-col z-40 transform transition-transform duration-300",
+          "fixed top-0 right-0 h-full w-64 bg-gray-900 text-white flex flex-col z-40 transform transition-transform duration-300 border-l border-gray-800",
           mobileOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"
         )}
       >
         {/* Logo */}
-        <div className="p-6 border-b border-gray-700">
+        <div className="p-5 border-b border-gray-800 flex-shrink-0">
           <div className="flex items-center gap-3">
-            <div className="bg-indigo-600 p-2 rounded-xl">
-              <Sparkles size={24} className="text-white" />
+            <div className="bg-gradient-to-br from-indigo-600 to-purple-600 p-2 rounded-xl shadow-lg">
+              <Sparkles size={22} className="text-white" />
             </div>
             <div>
-              <h1 className="font-bold text-lg leading-tight">GrowthOS</h1>
-              <p className="text-xs text-gray-400">פיתוח אישי חכם</p>
+              <h1 className="font-bold text-base leading-tight">GrowthOS</h1>
+              <p className="text-xs text-gray-500">פיתוח אישי חכם</p>
             </div>
           </div>
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 p-4 space-y-1">
-          {navItems.map(({ href, label, icon: Icon }) => {
-            const active = pathname === href;
-            return (
-              <Link
-                key={href}
-                href={href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-sm font-medium",
-                  active
-                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/25"
-                    : "text-gray-400 hover:bg-gray-800 hover:text-white"
-                )}
-              >
-                <Icon size={18} />
-                <span>{label}</span>
-                {active && (
-                  <div className="mr-auto w-2 h-2 bg-white rounded-full" />
-                )}
-              </Link>
-            );
-          })}
+        <nav className="flex-1 overflow-y-auto p-3 space-y-5">
+          {navGroups.map((group) => (
+            <div key={group.label}>
+              <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider px-3 mb-1">{group.label}</p>
+              <div className="space-y-0.5">
+                {group.items.map(({ href, label, icon: Icon }) => {
+                  const active = pathname === href;
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={() => setMobileOpen(false)}
+                      className={cn(
+                        "flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 text-sm font-medium",
+                        active
+                          ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
+                          : "text-gray-400 hover:bg-gray-800 hover:text-white"
+                      )}
+                    >
+                      <Icon size={16} className={active ? "text-white" : ""} />
+                      <span>{label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </nav>
 
-        {/* Footer */}
-        <div className="p-4 border-t border-gray-700">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-4">
+        {/* Footer tip */}
+        <div className="p-4 border-t border-gray-800 flex-shrink-0">
+          <div className="bg-gradient-to-r from-indigo-600/80 to-purple-600/80 rounded-xl p-3">
             <p className="text-xs font-semibold mb-1">💡 טיפ יומי</p>
-            <p className="text-xs text-indigo-100">
-              עקביות יומיומית עדיפה על מאמץ ספוראדי. 1% טוב יותר כל יום.
-            </p>
+            <p className="text-xs text-indigo-100 leading-relaxed">עקביות יומיומית עדיפה על מאמץ ספוראדי. 1% טוב יותר כל יום.</p>
           </div>
         </div>
       </aside>

@@ -7,17 +7,18 @@ datasource db {
 }
 
 model Habit {
-  id          String   @id @default(cuid())
+  id          String        @id @default(cuid())
   name        String
   description String?
-  category    String   @default("general")
-  frequency   String   @default("daily")
-  color       String   @default("#6366f1")
-  icon        String   @default("check")
-  targetDays  Int      @default(7)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  category    String        @default("general")
+  frequency   String        @default("daily")
+  color       String        @default("#6366f1")
+  icon        String        @default("check")
+  targetDays  Int           @default(7)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
   logs        HabitLog[]
+  schedules   HabitSchedule[]
 }
 
 model HabitLog {
@@ -28,8 +29,16 @@ model HabitLog {
   note      String?
   createdAt DateTime @default(now())
   habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
-
   @@unique([habitId, date])
+}
+
+model HabitSchedule {
+  id         String   @id @default(cuid())
+  habitId    String
+  dayOfWeek  Int
+  time       String   @default("08:00")
+  createdAt  DateTime @default(now())
+  habit      Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
 }
 
 model Goal {
@@ -45,6 +54,9 @@ model Goal {
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
   milestones  Milestone[]
+  tasks       GoalTask[]
+  vision      GoalVision?
+  deadline    GoalDeadline?
 }
 
 model Milestone {
@@ -55,6 +67,41 @@ model Milestone {
   completedAt DateTime?
   createdAt   DateTime  @default(now())
   goal        Goal      @relation(fields: [goalId], references: [id], onDelete: Cascade)
+}
+
+model GoalTask {
+  id          String    @id @default(cuid())
+  goalId      String
+  title       String
+  description String?
+  priority    String    @default("medium")
+  completed   Boolean   @default(false)
+  completedAt DateTime?
+  dueDate     DateTime?
+  createdAt   DateTime  @default(now())
+  goal        Goal      @relation(fields: [goalId], references: [id], onDelete: Cascade)
+}
+
+model GoalDeadline {
+  id             String   @id @default(cuid())
+  goalId         String   @unique
+  deadline       DateTime
+  alertDaysBefore Int     @default(7)
+  alertSent      Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  goal           Goal     @relation(fields: [goalId], references: [id], onDelete: Cascade)
+}
+
+model GoalVision {
+  id              String   @id @default(cuid())
+  goalId          String   @unique
+  whyMatters      String?
+  identityBehind  String?
+  ifNeglected     String?
+  ifCompleted     String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  goal            Goal     @relation(fields: [goalId], references: [id], onDelete: Cascade)
 }
 
 model ChatMessage {
@@ -86,4 +133,55 @@ model ProgressEntry {
   value     Float
   note      String?
   createdAt DateTime @default(now())
+}
+
+model Identity {
+  id              String   @id @default(cuid())
+  whoBecoming     String?
+  standards       String?
+  nonNegotiables  String?
+  rules           String?
+  values          String?
+  vision          String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model FocusPriority {
+  id          String   @id @default(cuid())
+  date        String   @unique
+  priority1   String?
+  priority2   String?
+  priority3   String?
+  currentTask String?
+  nextAction  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model WeeklyReview {
+  id                  String   @id @default(cuid())
+  weekDate            String   @unique
+  completedThisWeek   String?
+  inconsistentAreas   String?
+  blockers            String?
+  bestHabits          String?
+  movedGoals          String?
+  adjustments         String?
+  topPriorities       String?
+  wins                String?
+  lessons             String?
+  weeklyScore         Int      @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model RecoveryLog {
+  id           String   @id @default(cuid())
+  date         String
+  whatHappened String
+  trigger      String
+  nextSmallWin String
+  commitment   String
+  createdAt    DateTime @default(now())
 }
