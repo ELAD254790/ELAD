@@ -29,7 +29,7 @@ from handlers.projects import get_conv_handler as projects_conv
 from handlers.deep import get_conv_handler as deep_conv
 from handlers.mirror import mirror_handler, auto_mirror
 from handlers.nofap import nofap_handler, nofap_callback
-from handlers.habits import get_conv_handler as habits_conv
+from handlers.habits import get_conv_handler as habits_conv, habits_callback
 from handlers.goals import get_conv_handler as goals_conv
 
 logging.basicConfig(
@@ -181,6 +181,7 @@ def main():
     app.add_handler(CallbackQueryHandler(menu_callback, pattern="^m_"))
     app.add_handler(CallbackQueryHandler(gym_callback, pattern="^gym_"))
     app.add_handler(CallbackQueryHandler(nofap_callback, pattern="^nofap_"))
+    app.add_handler(CallbackQueryHandler(habits_callback, pattern="^habit_"))
 
     # Scheduled jobs (Israel time)
     jq = app.job_queue

@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ContextTypes, ConversationHandler,
-    CommandHandler, CallbackQueryHandler, MessageHandler, filters,
+    CommandHandler,
 )
 
 from claude_runner import ask_claude
@@ -13,9 +13,6 @@ from config import DATA_DIR, ALLOWED_CHAT_ID
 from data_manager import DataManager
 from elad_context import build_prompt
 from utils import safe_send
-
-ADD_HABIT = 0
-
 
 def _daily_keyboard(habits: list, done: dict):
     rows = []
@@ -86,10 +83,10 @@ async def habits_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if action == "habit_add":
-        await query.edit_message_text(
-            "שלח את שם ההרגל:\nדוגמה: `תפילין` או `שתיית 8 כוסות מים`"
+        await query.message.reply_text(
+            "📝 שלח את שם ההרגל:\n`/habits add תפילין`\n`/habits add אימון`\n`/habits add 8 כוסות מים`",
+            parse_mode='Markdown',
         )
-        context.user_data['awaiting_habit'] = True
         return
 
     if action.startswith("habit_toggle_"):
@@ -113,28 +110,10 @@ async def habits_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             pass
 
 
-async def habits_add_receive(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if not context.user_data.get('awaiting_habit'):
-        return ADD_HABIT
-    dm = DataManager(DATA_DIR)
-    name = update.message.text.strip()
-    dm.add_habit(name)
-    context.user_data['awaiting_habit'] = False
-    await update.message.reply_text(f"✅ הרגל נוסף: *{name}*\nשלח /habits לעדכון.", parse_mode='Markdown')
-    return ConversationHandler.END
-
-
-async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("ביטול.")
-    return ConversationHandler.END
-
-
 def get_conv_handler() -> ConversationHandler:
     return ConversationHandler(
         entry_points=[CommandHandler("habits", habits_handler)],
-        states={
-            ADD_HABIT: [MessageHandler(filters.TEXT & ~filters.COMMAND, habits_add_receive)],
-        },
-        fallbacks=[CommandHandler("cancel", cancel)],
+        states={},
+        fallbacks=[],
         per_message=False,
     )
