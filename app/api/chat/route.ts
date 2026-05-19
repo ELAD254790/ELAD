@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     take: 20,
   });
 
-  const messages = history.map((m) => ({
+  const messages = history.map((m: { role: string; content: string }) => ({
     role: m.role as "user" | "assistant",
     content: m.content,
   }));

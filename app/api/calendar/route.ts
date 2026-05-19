@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
       const end = new Date(endDate);
       while (cursor <= end) {
         const dayOfWeek = cursor.getDay();
-        if (habit.schedules.some((s) => s.dayOfWeek === dayOfWeek)) {
+        if (habit.schedules.some((s: { dayOfWeek: number }) => s.dayOfWeek === dayOfWeek)) {
           const dateStr = cursor.toISOString().split("T")[0];
           events.push({ id: `habit-${habit.id}-${dateStr}`, date: dateStr, title: habit.name, type: "habit" });
         }

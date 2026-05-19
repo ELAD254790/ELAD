@@ -185,3 +185,30 @@ model RecoveryLog {
   commitment   String
   createdAt    DateTime @default(now())
 }
+
+model EnglishSession {
+  id        String           @id @default(cuid())
+  mode      String           @default("conversation")
+  messages  EnglishMessage[]
+  createdAt DateTime         @default(now())
+}
+
+model EnglishMessage {
+  id          String         @id @default(cuid())
+  sessionId   String
+  role        String
+  content     String
+  rawResponse String?
+  createdAt   DateTime       @default(now())
+  session     EnglishSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model EnglishWord {
+  id         String    @id @default(cuid())
+  word       String    @unique
+  definition String
+  example    String?
+  level      String    @default("B1")
+  mastered   Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+}

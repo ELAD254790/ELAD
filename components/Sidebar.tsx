@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, CheckSquare, Target, MessageSquare, TrendingUp, FolderOpen,
-  Sparkles, Menu, X, ShieldCheck, Zap, RotateCcw, User, Eye, CalendarDays, BarChart2, BookOpen,
+  Sparkles, Menu, X, ShieldCheck, Zap, RotateCcw, User, Eye, CalendarDays, BarChart2, BookOpen, GraduationCap,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -41,6 +41,7 @@ const navGroups = [
       { href: "/advanced-analytics", label: "אנליטיקה מתקדמת", icon: BarChart2 },
       { href: "/calendar", label: "לוח שנה", icon: CalendarDays },
       { href: "/chat", label: "יועץ AI", icon: MessageSquare },
+      { href: "/english", label: "מורה אנגלית", icon: GraduationCap },
       { href: "/files", label: "קבצים", icon: FolderOpen },
     ],
   },
