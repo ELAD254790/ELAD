@@ -41,7 +41,6 @@ const navGroups = [
       { href: "/advanced-analytics", label: "אנליטיקה מתקדמת", icon: BarChart2 },
       { href: "/calendar", label: "לוח שנה", icon: CalendarDays },
       { href: "/chat", label: "יועץ AI", icon: MessageSquare },
-      { href: "/english", label: "מורה אנגלית", icon: GraduationCap },
       { href: "/files", label: "קבצים", icon: FolderOpen },
     ],
   },
@@ -84,6 +83,24 @@ export default function Sidebar() {
               <p className="text-xs text-gray-500">פיתוח אישי חכם</p>
             </div>
           </div>
+        </div>
+
+        {/* English Tutor — pinned at top */}
+        <div className="px-3 pt-3 flex-shrink-0">
+          <Link
+            href="/english"
+            onClick={() => setMobileOpen(false)}
+            className={cn(
+              "flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-150 text-sm font-semibold w-full",
+              pathname === "/english"
+                ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25"
+                : "bg-gradient-to-r from-blue-600/15 to-cyan-600/15 text-blue-300 hover:from-blue-600/25 hover:to-cyan-600/25 hover:text-white border border-blue-500/20"
+            )}
+          >
+            <GraduationCap size={17} />
+            <span>מורה אנגלית</span>
+            <span className="mr-auto text-xs opacity-60">🇺🇸</span>
+          </Link>
         </div>
 
         {/* Nav */}
