@@ -185,3 +185,60 @@ model RecoveryLog {
   commitment   String
   createdAt    DateTime @default(now())
 }
+
+model FinancialTransaction {
+  id          String   @id @default(cuid())
+  date        String
+  type        String   // "income" | "expense"
+  category    String
+  description String
+  amount      Float
+  note        String?
+  createdAt   DateTime @default(now())
+}
+
+model FinancialSubscription {
+  id          String   @id @default(cuid())
+  name        String
+  amount      Float
+  billingDay  Int
+  category    String   @default("other")
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model BankBalance {
+  id        String   @id @default(cuid())
+  balance   Float
+  note      String?
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+}
+
+model FinancialGoalRecord {
+  id            String   @id @default(cuid())
+  title         String
+  targetAmount  Float
+  currentAmount Float    @default(0)
+  deadline      String?
+  achieved      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model FinancialChatMessage {
+  id        String   @id @default(cuid())
+  role      String
+  content   String
+  createdAt DateTime @default(now())
+}
+
+model DailyFinancialCheckIn {
+  id           String   @id @default(cuid())
+  date         String   @unique
+  completed    Boolean  @default(false)
+  totalSpent   Float    @default(0)
+  note         String?
+  createdAt    DateTime @default(now())
+}
