@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, CheckSquare, Target, MessageSquare, TrendingUp, FolderOpen,
-  Sparkles, Menu, X, ShieldCheck, Zap, RotateCcw, User, Eye, CalendarDays, BarChart2, BookOpen,
+  Sparkles, Menu, X, ShieldCheck, Zap, RotateCcw, User, Eye, CalendarDays, BarChart2, BookOpen, PiggyBank,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -42,6 +42,7 @@ const navGroups = [
       { href: "/calendar", label: "לוח שנה", icon: CalendarDays },
       { href: "/chat", label: "יועץ AI", icon: MessageSquare },
       { href: "/files", label: "קבצים", icon: FolderOpen },
+      { href: "/financial-advisor", label: "יועץ פיננסי", icon: PiggyBank },
     ],
   },
 ];
